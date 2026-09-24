@@ -1,257 +1,136 @@
-# PS4 PS5 PKG Sender
+# PS5 PKG Sender & Receiver (Payload & NAS Server)
 
-**PKG Sender** installs PlayStation games over LAN from your PC: pick games, they queue up and install on the console. No USB juggling, no manual IP typing. PS5 **PKG** games install fine, no FPKG patching needed on your side. Disc images (`.exfat` / `.ffpfsc` / `.ffpkg`) copy straight to `/data/homebrew`.
-
-## Download
-
-Get `PkgSender-Setup-X.Y.Z.exe` from [Releases](../../releases) — self-contained, no .NET needed, no admin needed.
-
-> ⚠ **`pkg-receiver.elf` is PS5 ONLY.** PS4 does NOT need any ELF — it uses
-> Remote Package Installer or GoldHEN (see [Tutorial — PS4](#tutorial--ps4)).
-> Sending the ELF to a PS4 will not work.
-
-| Console | What runs on the console | Shipped where |
-| ------- | ------------------------ | ------------- |
-| PS5 | `pkg-receiver.elf` (send once via WebKit, stays listening on `12800`) | attached to the release + inside the PC install folder |
-| PS4 | **Remote Package Installer** homebrew (port `12800`) **or** GoldHEN with Payload Server on (ports `9090`/`9021`/`9020`) — install either yourself | not shipped, get it from its own release |
-
-On first launch the About window opens (support links live there).
+Система удаленной установки PKG-пакетов для PlayStation 5 (а также PS4), состоящая из двух компонентов:
+1. **`payload/` (PKGri)** — автономный фоновый C-демон для PS5 (FreeBSD/Prospero), принимающий команды установки, управляющий процессом через Sony `AppInstUtil`, опрашивающий внутренний и USB-накопители и рассылающий маяки обнаружения.
+2. **`server/` (NAS / PC Backend)** — легковесный сервер на Python (для Synology DSM, Linux, Windows, macOS), с автоматическим отслеживанием файлов (Watchdog), парсером заголовков PKG (`\x7FCNT` / `\x7FFIH`), базой SQLite, HTTP Range сервером (порт 9898), UDP-анонсером и адаптивным мультиязычным веб-интерфейсом.
 
 ---
 
-## Screenshots
+## 📁 Структура проекта
 
-![PKG Sender compact view](docs/screenshot-compact.png)
-
-![Sending ASTRO BOT to PS5](docs/screenshot-sending.png)
-
-![Console browser — Images view](docs/screenshot-console-images.png)
-
----
-
-## Tutorial — PS5
-
-### 1. Start the receiver on the console
-
-1. Jailbreak your PS5 and send `pkg-receiver.elf` (it ships inside the PC install folder).
-2. Wait for the console toast *listening on port 12800*.
-3. On first run the receiver also installs a **pkg remote installer** shortcut on the PS5 home screen (Media category, `PKGS12800`).
-
-### 2. Connect PC and console
-
-Put the console on the same network as this PC (Wi-Fi or LAN). The console itself needs no internet. See [LAN connection](#lan-connection) below for the direct-cable option.
-
-Open PKG Sender — it finds the console by itself (receiver beacon first, LAN sweep as fallback). If the console got a new DHCP address, it asks: *switch to it?* Press **Test** to verify (status dot goes green).
-
-### 3. Install a PKG game
-
-1. Press **Scan drives…** (or **+ Add folder**, or just drag files/folders onto the window), select games, press **Send PKG**.
-2. Updates and DLCs stay glued to their base game (exact Title ID — regions stay separate). Click the 🔗 chip on a card to show only that family.
-3. Watch the send queue: per-file progress, pause, reorder, retry. Tick **PS4 console** only for PS4 targets (see below) — PS5 queues natively.
-
-### 4. Install from the console browser (no PC walking)
-
-1. In PKG Sender press **Share to console**. The status bar shows the catalog URL (`http://<pc-ip>:9898/catalog`).
-2. On the PS5, open the **pkg remote installer** home-screen shortcut (or browse to `http://<console-ip>:12800/`).
-3. **Games** tab: base games with covers; click one for details, install updates/DLCs individually or everything at once with **Install all**.
-4. **Images** tab: disc images with a **Copy to homebrew** button each. Copy progress (percent + speed) shows above the list with **Pause** / **Cancel copy** — works even for copies started from the PC app.
-5. The header shows `page X • receiver Y` — if they differ, resend the newest ELF.
-
-### 5. Copy a disc image (PC side)
-
-Select `.exfat` / `.ffpkg` / `.ffpfsc` rows and press **Copy images** — they land in `/data/homebrew`. Each copy gets a queue row with live progress; ⏸ pauses the receiver, ✕ cancels it for real (partial file stays for resume).
-
----
-
-## Tutorial — PS4
-
-> No ELF, no USB, no FTP. The PS4 only needs a jailbreak plus one installer
-> service (below). PKG Sender pushes an install task to it; the PS4 then
-> downloads the PKG from your PC over plain HTTP (port `9898`).
-
-### 1. Prepare the console
-
-Jailbreak the PS4 and start **one** of these (the app tries them in this order):
-
-1. **Remote Package Installer (RPI)** — install the RPI `.pkg` on the PS4 and run it (serves its API on port `12800`). Easiest path, use this one.
-2. **GoldHEN with Payload Server enabled** — enable it in GoldHEN settings (ports `9090` / `9021` / `9020`). PKG Sender injects its installer payload itself; you install nothing extra.
-
-### 2. Connect and test
-
-Same network as the PC (see [LAN connection](#lan-connection)). In PKG Sender type the console IP and press **Test** — it reports which mode it found (`RPI` or `GoldHEN`).
-
-### 3. Install a PKG game
-
-1. Drag & drop the `.pkg` file onto the window — it goes **straight to the send queue** (nothing is added to the library). Or scan/add a folder and select games, then press **Send PKG**.
-2. Tick **PS4 console** above the queue — PS4 installs go strictly one-by-one (a PS5 queues natively, a PS4 does not).
-3. What happens per mode:
-   - **RPI**: the PC sends the file URL to `http://<ps4>:12800/api/install`; the PS4 downloads and installs it itself. Watch it appear in RPI on the TV.
-   - **GoldHEN**: payload injection over the binloader ports, then the PS4 pulls the PKG from your PC. If the console reports a BGFT error (`0x80990033`), it couldn't reach `http://<pc-ip>:9898` — check the firewall rule and that the PC IP in the app is your real LAN address.
-4. The queue row stays live until the download finishes; **Resume** continues a stopped one instead of starting over.
-
-No FTP is involved on either console — all transfers are plain HTTP from the PC's file server (port `9898`).
-
----
-
-## LAN connection
-
-### Method 1 — Through a router
-
-The easiest option — connect both your PC and console to the same router.
-
-```
-PC ─────┐
-        ├── Router
-PS5/PS4 ┘
+```text
+├── server/                 # Серверная часть (NAS / PC) на Python
+│   ├── main.py             # Точка входа сервера, управление потоками и Graceful Shutdown
+│   ├── server.py           # HTTP сервер (порт 9898, Range 206, REST API, UDP Broadcaster 12802)
+│   ├── scanner.py          # Служба мониторинга каталога с играми (Watchdog + сборка мусора)
+│   ├── parser.py           # Парсер метаданных PKG (SFO, param.json, извлечение icon0)
+│   ├── db.py               # Работа с NoSQL/JSON базой данных на SQLite (catalog.db)
+│   ├── feedback.py         # Генератор WebUI, трекинг IP консолей
+│   ├── config.py / .json   # Конфигурация путей к играм и порта сервера
+│   ├── logger.py           # Ротация логов (до 100 строк в app.log)
+│   └── locales.json        # Локализация интерфейса (RU, EN, FR, DE, ES, JA)
+├── payload/                # Клиентский демон для PS5 (C / Prospero)
+│   ├── main.c              # Исходный код демона (Prospero / POSIX, WebUI, HTTP/UDP, Standby)
+│   ├── Makefile            # Сборочные правила для PS5 ELF и хост-отладки (make, make host)
+│   ├── build.sh            # Скрипт сборки (PS5 SDK, --host, --docker, --clean)
+│   ├── Dockerfile          # Автономное Docker-окружение со сборочным тулчейном PS5 SDK
+│   ├── icon0.png           # Иконка для лаунчера на главном экране PS5
+│   ├── logo.png            # Логотип лаунчера
+│   ├── launcher_param.json # Манифест лаунчера для Prospero
+│   ├── pkg-receiver.elf    # Скомпилированный бинарный файл для отправки на PS5
+│   └── README.md           # Документация пейлоада
+├── index.html              # Встроенный Web-интерфейс управления пейлоадом (порт 12800)
+└── package.json            # Vite-конфигурация для предпросмотра WebUI
 ```
 
-You don't need to configure IP addresses manually.
+---
 
-1. Connect your PC to the router using Ethernet or Wi-Fi.
-2. Connect your PS5/PS4 to the same router.
-3. Start the receiver (PS5) / RPI-HEN (PS4) on the console.
-4. Open PKG Sender — it discovers the console on your local network automatically.
+## 🛠️ Сборка
 
-### Method 2 — Direct Ethernet connection
-
-PC straight to PS5/PS4 with an Ethernet cable, no router.
-
+### Вариант 1. Сборка через PS5 Payload SDK
+Требуются установленный SDK [ps5-payload-dev/sdk](https://github.com/ps5-payload-dev/sdk) и LLVM/Clang:
+```bash
+export PS5_PAYLOAD_SDK=/opt/ps5-payload-sdk
+cd payload
+make
+# или из корня:
+./payload/build.sh
 ```
-PC ───────── Ethernet ───────── PS5/PS4
-192.168.10.1                  192.168.10.2
+Результат сборки: `payload/pkg-receiver.elf`.
+
+### Вариант 2. Сборка через Docker (без установки SDK на хост)
+```bash
+./payload/build.sh --docker
 ```
+Скрипт собирает изолированный образ с тулчейном и компилирует чистый ELF-файл.
 
-Because there is no router providing DHCP, you must manually assign an IP address to both devices.
-
-**1. Set the PC IP address.** On Windows: Settings → Network & Internet → Ethernet → IP assignment → Edit. Select Manual, enable IPv4, and enter:
-
-- IP address: `192.168.10.1`
-- Subnet mask: `255.255.255.0`
-- Gateway: leave empty
-- DNS: leave empty
-
-**2. Set the console IP address.** Configure the console's Ethernet connection with:
-
-- IP address: `192.168.10.2`
-- Subnet mask: `255.255.255.0`
-- Gateway: leave empty
-- DNS: leave empty
-
-The important part is that both devices are on the same subnet (`255.255.255.0`).
-
-**3. Start the receiver** on the console, then launch PKG Sender on your PC. In the app pick the PC address from the PC box, type the console IP, press **Test**.
-
-> ⚠ Do NOT leave a direct cable on automatic IP assignment. Windows or the console may fall back to a `169.254.x.x` address when no DHCP server is available — PKG Sender ignores these automatic link-local addresses on purpose. If the cable is plugged in but nothing is found, this is almost always the cause.
+### Вариант 3. Сборка под хост (Linux / macOS / WSL) для тестирования
+```bash
+./payload/build.sh --host
+# Запуск локального демона для тестирования API:
+./payload/pkg-receiver-host
+```
 
 ---
 
-## Features
+## 🚀 Запуск на консоли
 
-- Zero-config networking: auto PC address, console auto-detect with switch prompt, live status dot, re-scan (↻ Detect) button
-- Library: cover art, Title ID, version, size; filter PS5/PS4, sort name/size, search with in-bar clear (✕)
-- Add games three ways: **Scan drives…**, **+ Add folder**, or **drag & drop** files/folders onto the window
-- Family linking: updates and DLCs stay glued to their base game (exact Title ID — regions stay separate); 🔗 chip shows the family, click to filter, click again to go back
-- Send queue with per-file progress, pause, reorder, retry, clear-done (orphaned rows included)
-- Image copies with live progress, receiver-side pause, and real cancel (partial kept for resume)
-- Console browser page (PS5): logo header, 5-column grid, platform badges, details modal, install-all queue, copy progress with pause/cancel
-- Self-updating: silent check at startup, footer button lights up on new release (off switch in About for offline PCs)
-- Guide window with setup + troubleshooting, first-run About
+Отправьте `pkg-receiver.elf` на консоль PS5 через Payload Loader (порт 9021 или 9020):
+```bash
+# Через netcat:
+nc -w 3 <IP_PS5> 9021 < payload/pkg-receiver.elf
+
+# Или через socat:
+socat -u FILE:payload/pkg-receiver.elf TCP:<IP_PS5>:9021
+```
+
+После загрузки на экране консоли появится системное уведомление:
+```text
+PKGri: listening on 12800
+IP: <IP_PS5>
+```
 
 ---
 
-## Receiver API (PS5)
+## 🌐 Сетевые порты и протоколы
 
-The receiver listens on `http://<console-ip>:12800`. File paths are jailed
-under `/data/homebrew`. This API is not stable and may change between versions.
-
-| Method | Path | Input | Reply |
-| ------ | ---- | ----- | ----- |
-| GET | `/api` | — | probe (online check, no action) |
-| GET | `/api/status` | — | `{"busy":bool,"active":N,"pull":bool,"pullName","pullGot","pullWant","pullPaused":bool}` |
-| GET | `/api/pc` | — | `{"pc":"1.2.3.4","age":N}` (last PC announce, `age` -1 = never) |
-| GET | `/api/version` | — | `{"build":"..."}` (compare with the page header) |
-| GET | `/api/space` | — | `{"free":N,"total":N}` (`/data` bytes) |
-| GET | `/logo.png`, `/favicon.ico` | — | sender logo PNG |
-| POST | `/api/install` | `{"packages":["<url>"],"name":"...","icon_url":"..."}` (`name`/`icon_url` optional) | `{"status":"success"}` or `{"status":"fail",...}` |
-| GET | `/install?url=` | PKG URL as query arg (+`name`, `+icon`) | starts install, plain-text reply |
-| GET | `/api/files/stat?path=` | remote path | `{"exists":bool,"size":N}` |
-| POST | `/api/files/pull` | `{"url":"http://pc:9898/pkg/id","path":"/data/homebrew/f.pkg","mode":"overwrite"/"resume"}` | `{"ok":true,"started":true}` + console toast on finish |
-| POST | `/api/pull/pause` | `{"paused":1/0}` | `{"ok":true,"paused":bool}` |
-| POST | `/api/pull/cancel` | `{}` | `{"ok":true,"cancelled":true}` (partial stays for resume) |
-
-File-explorer endpoints (`/api/fs/*`, Files tab) are temporarily disabled in the receiver.
-
-Discovery: the receiver broadcasts `PKGSENDER v1` to UDP `255.255.255.255:12801`
-every 3 seconds.
-
-## Console library (pkg remote installer, PS5)
-
-Browse and install the scanned PC library from the console's own browser —
-no need to walk back to the PC:
-
-1. In PKG Sender, scan your folders, then press **Share to console**. The status
-   bar shows the catalog URL (`http://<pc-ip>:9898/catalog`). While shared,
-   the PC also broadcasts `PKGSENDER-PC <pc-ip>:9898` to UDP `255.255.255.255:12802`
-   every 3 seconds, so the console finds it automatically (no manual IP entry).
-2. On first run the receiver installs a **pkg remote installer** shortcut on
-   the PS5 home screen (Media category, `PKGS12800`). Open it — or browse to
-   `http://<console-ip>:12800/` manually.
-3. **Games tab**: base games only (alphabetical, with covers, sizes and IDs);
-   click a base game for details and its updates/DLCs, each with its own Install
-   button, or **Install all** for the whole family. Search filters by title or
-   Title ID; chips filter PS5/PS4.
-4. The **Images** tab shows disc images (exfat/ffpfsc/ffpkg) with a
-   **Copy to homebrew** button each, plus live progress with Pause/Cancel.
-
-Published endpoints on the PC file server (`:9898`, CORS-open):
-
-| Method | Path | Reply |
-| ------ | ---- | ----- |
-| GET | `/catalog` | `[{"id","title","titleId","version","size","sizeText","role","familyKey","platform","format","file","hasIcon"}]` (`role` = Game/Patch/DLC/Image) |
-| GET | `/icon/{id}` | cover PNG (`image/png`) |
-| GET | `/pkg/{id}` | file bytes (range-capable, same as pushes use) |
+| Порт / Протокол | Назначение | Описание |
+|-----------------|------------|----------|
+| **12800 TCP** | HTTP REST API & WebUI | Основной сервер: веб-интерфейс, прием команд установки `/api/install`, мониторинг `/api/status`, свободное место `/api/space`. |
+| **12801 UDP** | Discovery Beacon | Каждые 3 секунды рассылает broadcast `PKGSENDER v1` в локальную подсеть для автообнаружения консоли. |
+| **12802 UDP** | PC Announce Listener | Принимает анонсы от ПК (`PKGSENDER-PC <IP>:<PORT>`) для быстрого сопряжения. |
 
 ---
 
-## Credits
+## 📡 HTTP API эндпоинты
 
-- [ps5-web-file-manager](https://github.com/owendswang/ps5-web-file-manager)
-  (GPL-3.0) — the home-screen web-shortcut launcher idea; reimplemented here,
-  no code copied.
-- [seregonwar/zftpd](https://github.com/seregonwar/zftpd) (MIT) — pointed at
-  PS5 TCP socket-buffer tuning as the fix for slow bulk transfers; our
-  pull-downloader buffering was rewritten from scratch, no code copied.
+- **`GET /`** — Встроенный веб-интерфейс (управление очередью, просмотр каталога, ручная установка по URL).
+- **`GET /api/status`** — Текущее состояние установки:
+  ```json
+  {"busy": false, "active": 0, "pull": false, "pullName": "", "pullGot": 0, "pullWant": -1, "pullPaused": false}
+  ```
+- **`GET /api/space`** — Свободное место на встроенном накопителе (`/data`) и подключенных USB-накопителях (`/mnt/usb0`..`/mnt/usb7`, `/mnt/ext0`, `/mnt/ext1`):
+  ```json
+  {
+    "free": 214748364800,
+    "total": 858993459200,
+    "internal": { "path": "/data", "free": 214748364800, "total": 858993459200 },
+    "usb": [
+      { "name": "USB 0", "path": "/mnt/usb0", "free": 64424509440, "total": 128849018880 }
+    ]
+  }
+  ```
+- **`POST /api/install`** — Запуск установки PKG по HTTP-ссылке:
+  ```json
+  {"packages": ["http://192.168.1.100:9898/game.pkg"]}
+  ```
+- **`GET /api/version`** — Версия пейлоада и сборки.
+- **`GET /api/pc`** — Адрес последнего обнаруженного сервера на ПК.
 
-## Support
+---
 
-If you enjoy what I build and want to support my work, you can donate — every bit means a lot. 💙
+## 🛡️ Отказоустойчивость и поддержка режима ожидания (Standby / Rest Mode)
 
-- USDT (BEP-20): `0x839a30D52Ef7D2b53e818b9931efd7FE6F472e50`
-  ([send via TrustWallet](https://link.trustwallet.com/send?coin=20000714&address=0x839a30D52Ef7D2b53e818b9931efd7FE6F472e50&token_id=0x55d398326f99059fF775485246999027B3197955))
-- More: [loopayeh.github.io](https://loopayeh.github.io/)
+- **Перехват `SIGCONT` (Wake-up Recovery):** При выходе консоли из режима ожидания сервер мгновенно перехватывает сигнал, ожидает 1 секунду для стабилизации сетевого стека `SceNet`, пересоздает сокет с `SO_REUSEADDR` / `SO_REUSEPORT` и выводит уведомление на экран.
+- **Сетевой вотчдог (каждые 5 секунд):** Автоматически отслеживает изменение локального IP консоли или переподключение Wi-Fi/LAN. При потере внешней сети сервер продолжает работать для локальных запросов через loopback (`127.0.0.1:12800`).
+- **UDP воркеры:** Сокеты маяков и приема анонсов автоматически восстанавливаются при сбоях сети (`ENETDOWN`, `EBADF`).
 
-## Troubleshooting
+---
 
-- **● No receiver (red)** — the elf isn't running on the console. Send it again. On the console page, `page X • receiver Y` mismatch means the same thing.
-- **○ No network (gray)** — this PC has no active LAN/Wi-Fi.
-- **Push goes through but download never starts** — allow inbound TCP port 9898 in Windows Firewall (the installer adds this rule plus UDP 12801 for beacons).
-- **Console IP keeps changing (DHCP)** — reopen the app or hit Detect; it offers the new address.
-- **Image cards without covers** — the header bridge needs `pkgviewer.py` next to the installed app (ships since 1.2.5) plus a Python with `mkpfs`; rescan after installing.
+## 💡 Лицензия и благодарности
 
-## Build from source
+- [ps5-payload-dev/sdk](https://github.com/ps5-payload-dev/sdk) — тулчейн и заголовочные файлы для сборки ELF под PS5 Prospero.
+- [ps5-payload-manager](https://github.com/itsPLK/ps5-payload-manager) — паттерны восстановления соединения после Standby и сетевой вотчдог.
+- [seregonwar/zftpd](https://github.com/seregonwar/zftpd) — рекомендации по оптимизации буферов сокетов для PS5.
+- [ps5-web-file-manager](https://github.com/owendswang/ps5-web-file-manager) — концепция веб-ярлыка на главном экране.
 
-Needs .NET 8 SDK (+ Inno Setup 6 for the installer):
-
-```bat
-Build-Release.bat
-```
-
-This publishes a self-contained single-file build to `dist\`, copies in `pkg-receiver.elf` + `pkgviewer.py`, and, if `iscc` is available, produces `PkgSender-Setup-X.Y.Z.exe`. The PS5 receiver rebuilds with the ps5-payload-sdk toolchain:
-
-```sh
-cd payload && make PS5_PAYLOAD_SDK=/path/to/ps5-payload-sdk
-```
-
-## How updates work
-
-The app checks GitHub releases for a `PkgSender-Setup-*.exe` asset newer than its own version. **Download + Install** fetches it to a temp dir, launches it silent, and exits so Setup can overwrite the running app.

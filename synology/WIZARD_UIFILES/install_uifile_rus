@@ -1,0 +1,35 @@
+[
+  {
+    "step_title": "Параметры сервера PS5 PKG Sender",
+    "items": [
+      {
+        "type": "textfield",
+        "desc": "Укажите путь к папке с файлами .pkg (например, /volume1/downloads или /volume1/PS_Games):",
+        "subitems": [
+          {
+            "key": "wizard_pkg_folder",
+            "desc": "Путь к папке PKG",
+            "defaultValue": "/volume1/downloads",
+            "validator": {
+              "allowBlank": false
+            }
+          }
+        ]
+      },
+      {
+        "type": "textfield",
+        "desc": "Сетевой порт для веб-интерфейса и передачи файлов:",
+        "subitems": [
+          {
+            "key": "wizard_server_port",
+            "desc": "Порт сервера",
+            "defaultValue": "9898",
+            "validator": {
+              "allowBlank": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

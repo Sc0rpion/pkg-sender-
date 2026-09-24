@@ -1,0 +1,35 @@
+[
+  {
+    "step_title": "PS5 PKG Sender Configuration",
+    "items": [
+      {
+        "type": "textfield",
+        "desc": "Specify folder containing .pkg files (e.g. /volume1/downloads or /volume1/PS_Games):",
+        "subitems": [
+          {
+            "key": "wizard_pkg_folder",
+            "desc": "PKG Folder Path",
+            "defaultValue": "/volume1/downloads",
+            "validator": {
+              "allowBlank": false
+            }
+          }
+        ]
+      },
+      {
+        "type": "textfield",
+        "desc": "Network port for Web UI and streaming (default: 9898):",
+        "subitems": [
+          {
+            "key": "wizard_server_port",
+            "desc": "Server Port",
+            "defaultValue": "9898",
+            "validator": {
+              "allowBlank": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

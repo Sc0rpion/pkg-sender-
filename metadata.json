@@ -1,0 +1,8 @@
+{
+  "name": "PKG Sender",
+  "description": "PlayStation 4 & PlayStation 5 remote package installer, game library manager, and LAN server for homebrew package installation.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

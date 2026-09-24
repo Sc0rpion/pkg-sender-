@@ -1,0 +1,12 @@
+{
+  "defaults": {
+    "run-as": "package"
+  },
+  "username": "sc-pkg-sender",
+  "groupname": "sc-pkg-sender",
+  "join-group": [
+    {
+      "groupname": "administrators"
+    }
+  ]
+}

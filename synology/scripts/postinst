@@ -1,0 +1,51 @@
+#!/bin/sh
+PKG_DIR="${SYNOPKG_PKGDEST}"
+SERVER_DIR="${PKG_DIR}/server"
+CONFIG_FILE="${SERVER_DIR}/config.json"
+
+CHOSEN_FOLDER="/volume1/downloads"
+CHOSEN_PORT=9898
+
+# Check if environment file was provided by Synology wizard
+if [ -f "/tmp/synopkg_wizard_uifile.env" ]; then
+    . "/tmp/synopkg_wizard_uifile.env"
+fi
+
+# 1. Folder path resolution
+if [ -n "${wizard_pkg_folder}" ]; then
+    CHOSEN_FOLDER="${wizard_pkg_folder}"
+elif [ -n "${WIZARD_PKG_FOLDER}" ]; then
+    CHOSEN_FOLDER="${WIZARD_PKG_FOLDER}"
+elif [ -n "${SYNOPKG_WIZARD_PKG_FOLDER}" ]; then
+    CHOSEN_FOLDER="${SYNOPKG_WIZARD_PKG_FOLDER}"
+elif [ -n "${SYNOPKG_WIZARD_wizard_pkg_folder}" ]; then
+    CHOSEN_FOLDER="${SYNOPKG_WIZARD_wizard_pkg_folder}"
+fi
+
+# 2. Port resolution
+if [ -n "${wizard_server_port}" ]; then
+    CHOSEN_PORT="${wizard_server_port}"
+elif [ -n "${WIZARD_SERVER_PORT}" ]; then
+    CHOSEN_PORT="${WIZARD_SERVER_PORT}"
+elif [ -n "${SYNOPKG_WIZARD_SERVER_PORT}" ]; then
+    CHOSEN_PORT="${SYNOPKG_WIZARD_SERVER_PORT}"
+elif [ -n "${SYNOPKG_WIZARD_wizard_server_port}" ]; then
+    CHOSEN_PORT="${SYNOPKG_WIZARD_wizard_server_port}"
+fi
+
+# Write config.json
+mkdir -p "${SERVER_DIR}"
+cat <<EOF > "${CONFIG_FILE}"
+{
+    "pkg_folder": "${CHOSEN_FOLDER}",
+    "server_port": ${CHOSEN_PORT}
+}
+EOF
+
+# Ensure icons directory exists
+mkdir -p "${SERVER_DIR}/icons"
+
+# Set permissions
+chmod -R 755 "${PKG_DIR}"
+
+exit 0

@@ -1,0 +1,13 @@
+#!/bin/sh
+BACKUP_DIR="/tmp/pkg_sender_upgrade_backup"
+
+if [ -f "${BACKUP_DIR}/config.json" ]; then
+    cp -f "${BACKUP_DIR}/config.json" "${SYNOPKG_PKGDEST}/server/config.json"
+fi
+if [ -f "${BACKUP_DIR}/catalog.db" ]; then
+    cp -f "${BACKUP_DIR}/catalog.db" "${SYNOPKG_PKGDEST}/server/catalog.db"
+fi
+
+rm -rf "${BACKUP_DIR}"
+chmod -R 755 "${SYNOPKG_PKGDEST}"
+exit 0

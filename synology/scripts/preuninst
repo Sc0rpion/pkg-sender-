@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ -x "${SYNOPKG_PKGDEST}/scripts/start-stop-status" ]; then
+    "${SYNOPKG_PKGDEST}/scripts/start-stop-status" stop
+fi
+exit 0

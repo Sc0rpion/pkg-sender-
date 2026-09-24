@@ -1,0 +1,110 @@
+#!/bin/sh
+
+PKG_DIR="${SYNOPKG_PKGDEST}"
+SERVER_DIR="${PKG_DIR}/server"
+PID_FILE="${PKG_DIR}/server.pid"
+LOG_FILE="${SERVER_DIR}/app.log"
+
+find_python() {
+    if which python3 >/dev/null 2>&1; then
+        which python3
+    elif [ -x "/usr/local/bin/python3" ]; then
+        echo "/usr/local/bin/python3"
+    elif [ -x "/usr/bin/python3" ]; then
+        echo "/usr/bin/python3"
+    elif [ -x "/var/packages/Python3/target/usr/local/bin/python3" ]; then
+        echo "/var/packages/Python3/target/usr/local/bin/python3"
+    else
+        echo "python3"
+    fi
+}
+
+PYTHON_BIN="$(find_python)"
+
+is_running() {
+    if [ -f "${PID_FILE}" ]; then
+        PID=$(cat "${PID_FILE}" 2>/dev/null)
+        if [ -n "${PID}" ] && kill -0 "${PID}" 2>/dev/null; then
+            return 0
+        fi
+    fi
+    return 1
+}
+
+start_daemon() {
+    if is_running; then
+        echo "PS5 PKG Sender is already running."
+        exit 0
+    fi
+    echo "Starting PS5 PKG Sender..."
+    cd "${SERVER_DIR}" || exit 1
+    nohup "${PYTHON_BIN}" main.py >> "${LOG_FILE}" 2>&1 &
+    PID=$!
+    echo ${PID} > "${PID_FILE}"
+    sleep 1
+    if is_running; then
+        echo "Started with PID $(cat "${PID_FILE}")"
+        exit 0
+    else
+        echo "Failed to start PS5 PKG Sender"
+        exit 1
+    fi
+}
+
+stop_daemon() {
+    if ! is_running; then
+        echo "PS5 PKG Sender is not running."
+        rm -f "${PID_FILE}"
+        exit 0
+    fi
+    echo "Stopping PS5 PKG Sender..."
+    PID=$(cat "${PID_FILE}" 2>/dev/null)
+    if [ -n "${PID}" ]; then
+        kill -15 "${PID}" 2>/dev/null
+        for i in 1 2 3 4 5; do
+            if ! is_running; then
+                break
+            fi
+            sleep 1
+        done
+        if is_running; then
+            kill -9 "${PID}" 2>/dev/null
+        fi
+    fi
+    rm -f "${PID_FILE}"
+    echo "Stopped."
+    exit 0
+}
+
+daemon_status() {
+    if is_running; then
+        echo "PS5 PKG Sender is running (PID: $(cat "${PID_FILE}"))."
+        exit 0
+    else
+        echo "PS5 PKG Sender is stopped."
+        exit 1
+    fi
+}
+
+case "$1" in
+    start)
+        start_daemon
+        ;;
+    stop)
+        stop_daemon
+        ;;
+    restart)
+        stop_daemon
+        start_daemon
+        ;;
+    status)
+        daemon_status
+        ;;
+    log)
+        echo "${LOG_FILE}"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status|log}"
+        exit 1
+        ;;
+esac

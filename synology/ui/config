@@ -1,0 +1,14 @@
+{
+  ".url": {
+    "SYNO.SDS.pkg-sender": {
+      "title": "PS5 PKG Sender",
+      "desc": "PlayStation 5 PKG Server & Remote Installer",
+      "icon": "images/icon_{0}.png",
+      "type": "url",
+      "protocol": "http",
+      "port": 9898,
+      "url": "/",
+      "allUsers": true
+    }
+  }
+}
