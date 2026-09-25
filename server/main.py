@@ -4,6 +4,15 @@
 и перехватывает сигналы операционной системы для штатного завершения работы 
 (Graceful Shutdown), предотвращая обрыв скачивания или повреждение БД.
 """
+import os
+import sys
+
+# Ensure bundled libraries (e.g. watchdog) in server/lib are available
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_lib_dir = os.path.join(_current_dir, 'lib')
+if os.path.isdir(_lib_dir) and _lib_dir not in sys.path:
+    sys.path.insert(0, _lib_dir)
+
 import threading
 import signal
 import sys

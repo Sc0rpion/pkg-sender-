@@ -24,6 +24,10 @@ chmod 755 "${SCRIPT_DIR}/scripts/"*
 # 1. Copy server files to staging (clean of cache, logs and temporary DB)
 echo "-> Copying server files..."
 cp "${ROOT_DIR}/server/"*.py "${STAGE_DIR}/server/"
+if [ -d "${ROOT_DIR}/server/lib" ]; then
+    echo "-> Bundling Python libraries (watchdog)..."
+    cp -r "${ROOT_DIR}/server/lib" "${STAGE_DIR}/server/"
+fi
 cp "${ROOT_DIR}/server/locales.json" "${STAGE_DIR}/server/"
 mkdir -p "${STAGE_DIR}/server/icons"
 

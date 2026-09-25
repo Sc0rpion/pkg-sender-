@@ -24,13 +24,48 @@ def save_game(game_id, data_dict):
     conn.close()
     logger.info(f"Saved game to DB: {game_id}")
 
+ROLE_WEIGHT = {"GAME": 1, "PATCH": 2, "DLC": 3}
+
+def sort_catalog_list(catalog_items):
+    """
+    Группирует и сортирует список каталога:
+    Каждая игра объединяется по Title ID (например, PPSA29180),
+    внутри группы строго по порядку: Game (базовая игра) -> Patch (обновления) -> DLC -> Ошибки.
+    Группы сортируются: PS5 -> PS4 -> по алфавиту названия.
+    """
+    grouped = {}
+    for item in catalog_items:
+        key = item.get("familyKey") or item.get("titleId") or "UNKNOWN"
+        if key not in grouped:
+            grouped[key] = []
+        grouped[key].append(item)
+
+    for group in grouped.values():
+        def item_sort_key(it):
+            is_err = 1 if it.get("error") else 0
+            role_w = ROLE_WEIGHT.get(str(it.get("role", "")).upper(), 4)
+            ver = str(it.get("version", "0.00")).lower()
+            return (is_err, role_w, ver)
+        group.sort(key=item_sort_key)
+
+    group_arr = list(grouped.values())
+    def group_sort_key(grp):
+        plat = 1 if grp[0].get("platform") == "PS5" else 0
+        title = (grp[0].get("title") or "").lower()
+        return (-plat, title)
+
+    group_arr.sort(key=group_sort_key)
+    return [item for group in group_arr for item in group]
+
 def get_all_catalog():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute("SELECT data FROM games")
     rows = c.fetchall()
     conn.close()
-    return [json.loads(row[0])["catalog"] for row in rows]
+    raw_catalog = [json.loads(row[0])["catalog"] for row in rows]
+    return sort_catalog_list(raw_catalog)
+
 
 def get_game(game_id):
     conn = sqlite3.connect(DB_PATH)

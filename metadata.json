@@ -1,6 +1,6 @@
 {
-  "name": "PKG Sender",
-  "description": "PlayStation 4 & PlayStation 5 remote package installer, game library manager, and LAN server for homebrew package installation.",
+  "name": "PS5 PKG Sender & Synology SPK",
+  "description": "PlayStation 5 & PS4 high-speed remote package installer, Synology DSM SPK server, and console receiver daemon with auto-discovery, catalog grouping, and ACL permissions management.",
   "permissions": [],
   "capabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

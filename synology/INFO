@@ -1,5 +1,5 @@
 package="pkg-sender"
-version="1.0.0-0001"
+version="1.2.1-0001"
 os_min_ver="7.0-40000"
 description="High-speed HTTP & REST server for PlayStation 5 PKG installation directly from Synology NAS."
 description_rus="Высокоскоростной HTTP и REST сервер для прямой установки PKG на PlayStation 5 с Synology NAS."

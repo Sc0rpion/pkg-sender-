@@ -396,8 +396,14 @@ def get_html_page():
 
         async function fetchCatalog() {
             try {
-                let res = await fetch('/catalog');
-                window.allGames = await res.json();
+                let [resCat, resCfg] = await Promise.all([
+                    fetch('/catalog'),
+                    fetch('/api/config').catch(() => null)
+                ]);
+                window.allGames = await resCat.json();
+                if (resCfg && resCfg.ok) {
+                    window.serverConfig = await resCfg.json();
+                }
                 renderCatalog();
             } catch(e) {
                 document.getElementById('catalog_count').innerText = "Error";
@@ -467,7 +473,39 @@ def get_html_page():
             container.innerHTML = '';
             
             if (sortedGames.length === 0) {
-                container.innerHTML = `<div style="text-align: center; padding: 20px; color: #666;">${t.no_games || "Empty"}</div>`;
+                let cfg = window.serverConfig || {};
+                let warningHtml = "";
+                let folder = cfg.pkg_folder || "/volume1/downloads";
+                if (cfg.folder_exists === false) {
+                    let notFoundDesc = (t.folder_not_found || "Scan folder not found: {folder}. Please check path in Settings.").replace('{folder}', `<b>${folder}</b>`);
+                    warningHtml = `
+                    <div style="background: rgba(235, 87, 87, 0.12); border: 1px solid #eb5757; border-radius: 8px; padding: 16px; margin: 15px auto; max-width: 700px; text-align: left; color: #fff;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-weight: bold; color: #eb5757; font-size: 15px;">
+                            <span>⚠️</span> <span>${t.permission_error_title || "Scan folder error"}</span>
+                        </div>
+                        <div style="font-size: 13px; line-height: 1.5; color: #ddd;">
+                            ${notFoundDesc}
+                        </div>
+                    </div>`;
+                } else if (cfg.folder_readable === false) {
+                    let permDesc = (t.permission_error_desc || "No read permission for folder: {folder}.").replace('{folder}', `<b>${folder}</b>`);
+                    warningHtml = `
+                    <div style="background: rgba(255, 170, 0, 0.12); border: 1px solid #ffaa00; border-radius: 8px; padding: 16px; margin: 15px auto; max-width: 750px; text-align: left; color: #fff;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-weight: bold; color: #ffaa00; font-size: 15px;">
+                            <span>🔒</span> <span>${t.permission_error_title || "Warning: Permission Denied on Synology!"}</span>
+                        </div>
+                        <div style="font-size: 13px; line-height: 1.6; color: #ddd;">
+                            ${permDesc}
+                        </div>
+                    </div>`;
+                }
+
+                container.innerHTML = `
+                    ${warningHtml}
+                    <div style="text-align: center; padding: 25px; color: #888; font-size: 14px;">
+                        ${t.no_games || "Empty"}
+                    </div>
+                `;
                 return;
             }
             

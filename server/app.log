@@ -1,85 +1,3 @@
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Titan Quest/EP4389-CUSA08366_00-TITANQUEST000000-A0100-V0110.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Titan Quest/EP4389-CUSA08366_00-TITANQUEST000000-A0100-V0110.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Titan Quest/EP4389-CUSA08366_00-TITANQUESTDLC002.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Titan Quest/EP4389-CUSA08366_00-TITANQUESTDLC002.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Titan Quest/123.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Titan Quest/123.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Fortnite/UP1477-CUSA07022_00-FORTNITETESTING1-A0202-V0100-SametTakao-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Fortnite/UP1477-CUSA07022_00-FORTNITETESTING1-A0202-V0100-SametTakao-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Fortnite/UP1477-CUSA07022_00-FORTNITETESTING1-A0100-V0202-SametTakao-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Fortnite/UP1477-CUSA07022_00-FORTNITETESTING1-A0100-V0202-SametTakao-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Hasbro Family Fun Pack (CUSA03312)/EP0001-CUSA03312_00-HASBROGAMESPS401-A0100-V0102.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Hasbro Family Fun Pack (CUSA03312)/EP0001-CUSA03312_00-HASBROGAMESPS401-A0100-V0102.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Hasbro Family Fun Pack v1.00 by DUPLEX/PS4_Hasbro_Family_Fun_Pack_CUSA03312_Game_Full_psgames.by.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Hasbro Family Fun Pack v1.00 by DUPLEX/PS4_Hasbro_Family_Fun_Pack_CUSA03312_Game_Full_psgames.by.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Knowledge is Power/EP9000-CUSA09557_00-1710231057KPE3M0-A0101-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Knowledge is Power/EP9000-CUSA09557_00-1710231057KPE3M0-A0101-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Knowledge is Power/EP9000-CUSA09557_00-1710231057KPE3M0-A0100-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Knowledge is Power/EP9000-CUSA09557_00-1710231057KPE3M0-A0100-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Beyond.Good.&.Evil.20th.Anniversary.Edition/EP0001-CUSA34896_00-BGER000000000000-A0101-V0100-10.00-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Beyond.Good.&.Evil.20th.Anniversary.Edition/EP0001-CUSA34896_00-BGER000000000000-A0101-V0100-10.00-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Beyond.Good.&.Evil.20th.Anniversary.Edition/EP0001-CUSA34896_00-BGER000000000000-A0100-V0100-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Beyond.Good.&.Evil.20th.Anniversary.Edition/EP0001-CUSA34896_00-BGER000000000000-A0100-V0100-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/Beyond.Good.&.Evil.20th.Anniversary.Edition/Backport/EP0001-CUSA34896_00-BGER000000000000-A0101-V0100-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/Beyond.Good.&.Evil.20th.Anniversary.Edition/Backport/EP0001-CUSA34896_00-BGER000000000000-A0101-V0100-CyB1K.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/That's You! v1.04 by MorpheusGames/PS4_That's_You!_CUSA02009_02_Patch_v1.04.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/That's You! v1.04 by MorpheusGames/PS4_That's_You!_CUSA02009_02_Patch_v1.04.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_4/That's You! v1.04 by MorpheusGames/PS4_That's_You!_CUSA02009_01_Game_Full.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_4/That's You! v1.04 by MorpheusGames/PS4_That's_You!_CUSA02009_01_Game_Full.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/extra/temp/f0fbdd436be957baf1a6418ff8229858.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/extra/temp/f0fbdd436be957baf1a6418ff8229858.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_5/A Plague Tale Innocence [GamesVoice]/EP4133-CUSA10812_00-APLAGUETALEGAME0-A0109-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_5/A Plague Tale Innocence [GamesVoice]/EP4133-CUSA10812_00-APLAGUETALEGAME0-A0109-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Games/PlayStation_5/A Plague Tale Innocence [GamesVoice]/EP4133-CUSA10812_00-APLAGUETALEGAME0-A0100-V0106.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Games/PlayStation_5/A Plague Tale Innocence [GamesVoice]/EP4133-CUSA10812_00-APLAGUETALEGAME0-A0100-V0106.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/CUSA00512[Beyond Two Souls]/EP9000-CUSA00512_00-GBEYONDTWO000001-A0100-V0101.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/CUSA00512[Beyond Two Souls]/EP9000-CUSA00512_00-GBEYONDTWO000001-A0100-V0101.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/AStrobot/Astro Bot (PPSA21559) (J) - Digital Deluxe Edition Rewards.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/AStrobot/Astro Bot (PPSA21559) (J) - Digital Deluxe Edition Rewards.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/AStrobot/Astro Bot (PPSA21559) (J) - Pre-Order Bonus Contents.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/AStrobot/Astro Bot (PPSA21559) (J) - Pre-Order Bonus Contents.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/AStrobot/EP9000-PPSA21567_00-0000000000000000-A0118-V0118.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/AStrobot/EP9000-PPSA21567_00-0000000000000000-A0118-V0118.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/GWR/UP9000-PPSA08329_00-GOWRAGNAROK00000-A0606-V0606.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/GWR/UP9000-PPSA08329_00-GOWRAGNAROK00000-A0606-V0606.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/GWR/Загрузчики/EP9000-CUSA34603_00-GOWRAGNAROKCAVE0-A0100-V0101.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/GWR/Загрузчики/EP9000-CUSA34603_00-GOWRAGNAROKCAVE0-A0100-V0101.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Split.Fiction/Split.Fiction.Crack.PS5-DUPLEX.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Split.Fiction/Split.Fiction.Crack.PS5-DUPLEX.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Split.Fiction/UP0006-PPSA08560_00-SPLITGAME0000000-A01500-V01500.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Split.Fiction/UP0006-PPSA08560_00-SPLITGAME0000000-A01500-V01500.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Ghost.of.Yote/Ghost.of.Yotei.Crack.incl.DLC.Unlocker.PS5-DUPLEX.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Ghost.of.Yote/Ghost.of.Yotei.Crack.incl.DLC.Unlocker.PS5-DUPLEX.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Ghost.of.Yote/UP9000-PPSA26344_00-GHOST2SHIP000000.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Ghost.of.Yote/UP9000-PPSA26344_00-GHOST2SHIP000000.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-PREO01ALLP00R0HD-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-PREO01ALLP00R0HD-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-PREO02AMZN00R0VO-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-PREO02AMZN00R0VO-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-PREO03SONY00P0HD-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-PREO03SONY00P0HD-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-STOR01ALLP00R0VP-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-STOR01ALLP00R0VP-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-STOR02ALLP00R0VO-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-STOR02ALLP00R0VO-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-STOR03SONY00P0HD-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-STOR03SONY00P0HD-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-STOR07ALLP00R0VO-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-STOR07ALLP00R0VO-A0000-V0100.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0104-V0100-672-WV.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0104-V0100-672-WV.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0104-V0100-505-MV.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0104-V0100-505-MV.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0104-V0100-672-MV.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0104-V0100-672-MV.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0104-V0100-505-WV.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0104-V0100-505-WV.pkg
-2026-09-23 08:46:11 - INFO - PKG removed or renamed, clearing DB entry for: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0100-V0104.pkg
-2026-09-23 08:46:11 - INFO - Removed from DB: /volume1/downloads/Hogwarts Legacy/EP1018-CUSA12771_00-HOGWARTSLEGACY01-A0100-V0104.pkg
-2026-09-23 08:46:11 - WARNING - Scan folder does not exist: /volume1/downloads
-2026-09-23 08:46:11 - WARNING - Watchdog not found. Falling back to 5-minute polling.
-2026-09-23 08:46:13 - ERROR - [WebUI] Install error: game PPSA01593_bf7a4b not found in DB.
-2026-09-23 08:47:41 - INFO - === Starting Pkg Sender Backend ===
 2026-09-23 08:47:41 - INFO - Database initialized.
 2026-09-23 08:47:41 - WARNING - Scan folder does not exist: /volume1/downloads
 2026-09-23 08:47:41 - INFO - Started UDP Broadcast at 169.254.8.1:9898
@@ -98,3 +16,85 @@
 2026-09-23 08:47:52 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
 2026-09-23 08:47:54 - INFO - Received exit signal (15). Initiating graceful shutdown...
 2026-09-23 08:47:54 - INFO - Shutting down HTTP Server...
+2026-09-25 16:26:17 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:26:17 - INFO - Database initialized.
+2026-09-25 16:26:17 - INFO - Starting directory scan: /volume1/downloads
+2026-09-25 16:26:17 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:26:17 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:26:17 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:30:57 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:30:57 - INFO - Database initialized.
+2026-09-25 16:30:57 - INFO - Starting directory scan: /volume1/downloads
+2026-09-25 16:30:57 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:30:57 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:30:57 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:31:42 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:31:42 - INFO - Database initialized.
+2026-09-25 16:31:42 - INFO - Starting directory scan: /volume1/downloads
+2026-09-25 16:31:42 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:31:42 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:31:42 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:36:42 - INFO - Starting directory scan: /volume1/downloads
+2026-09-25 16:36:42 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:38:37 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:38:37 - INFO - Database initialized.
+2026-09-25 16:38:37 - INFO - Starting directory scan: /volume1/downloads
+2026-09-25 16:38:37 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:38:37 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:38:37 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:38:55 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:38:55 - INFO - Database initialized.
+2026-09-25 16:38:55 - INFO - Starting directory scan: /volume1/downloads
+2026-09-25 16:38:55 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:38:55 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:38:55 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:40:15 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:40:15 - INFO - Database initialized.
+2026-09-25 16:40:15 - INFO - Starting directory scan: /volume1/downloads
+2026-09-25 16:40:15 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:40:15 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:40:15 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:44:25 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:44:25 - INFO - Database initialized.
+2026-09-25 16:44:25 - INFO - Starting directory scan: /volume1/downloads (Reason: Server startup initial catalog check)
+2026-09-25 16:44:25 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:44:25 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:44:25 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:46:53 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:46:53 - INFO - Database initialized.
+2026-09-25 16:46:53 - INFO - Starting directory scan: /volume1/downloads (Reason: Server startup initial catalog check)
+2026-09-25 16:46:53 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:46:53 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:46:53 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:47:14 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:47:14 - INFO - Database initialized.
+2026-09-25 16:47:14 - INFO - Starting directory scan: /volume1/downloads (Reason: Server startup initial catalog check)
+2026-09-25 16:47:14 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:47:14 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:47:14 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:48:39 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:48:39 - INFO - Database initialized.
+2026-09-25 16:48:39 - INFO - Starting directory scan: /volume1/downloads (Reason: Server startup initial catalog check)
+2026-09-25 16:48:39 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:48:39 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:48:39 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:48:58 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:48:58 - INFO - Database initialized.
+2026-09-25 16:48:58 - INFO - Starting directory scan: /volume1/downloads (Reason: Server startup initial catalog check)
+2026-09-25 16:48:58 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:48:58 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:48:58 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:59:13 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:59:13 - INFO - Database initialized.
+2026-09-25 16:59:13 - INFO - Starting directory scan: /volume1/downloads (Reason: Server startup initial catalog check)
+2026-09-25 16:59:13 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:59:13 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:59:13 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 16:59:32 - INFO - === Starting Pkg Sender Backend ===
+2026-09-25 16:59:32 - INFO - Database initialized.
+2026-09-25 16:59:32 - INFO - Starting directory scan: /volume1/downloads (Reason: Server startup initial catalog check)
+2026-09-25 16:59:32 - ERROR - Scan folder DOES NOT EXIST: '/volume1/downloads'. Please verify path in config.json or DSM wizard.
+2026-09-25 16:59:32 - INFO - Started UDP Broadcast at 169.254.8.1:9898
+2026-09-25 16:59:32 - INFO - HTTP Server running on port 9898. UI: http://169.254.8.1:9898
+2026-09-25 17:00:46 - INFO - Received exit signal (15). Initiating graceful shutdown...
+2026-09-25 17:00:46 - INFO - Shutting down HTTP Server...

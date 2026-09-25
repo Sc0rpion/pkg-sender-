@@ -226,14 +226,18 @@ class PkgSenderHandler(SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
+            folder_exists = os.path.exists(config.PKG_FOLDER)
+            folder_readable = os.access(config.PKG_FOLDER, os.R_OK) if folder_exists else False
             self.wfile.write(json.dumps({
                 "pkg_folder": config.PKG_FOLDER,
-                "server_port": config.PORT
+                "server_port": config.PORT,
+                "folder_exists": folder_exists,
+                "folder_readable": folder_readable
             }).encode('utf-8'))
             return
 
         elif base_path == '/api/rescan':
-            scanner.trigger_rescan()
+            scanner.trigger_rescan(reason="Web UI manual rescan button")
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()

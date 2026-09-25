@@ -2,7 +2,6 @@
 PKG_DIR="${SYNOPKG_PKGDEST}"
 SERVER_DIR="${PKG_DIR}/server"
 CONFIG_FILE="${SERVER_DIR}/config.json"
-
 CHOSEN_FOLDER="/volume1/downloads"
 CHOSEN_PORT=9898
 
@@ -35,17 +34,30 @@ fi
 
 # Write config.json
 mkdir -p "${SERVER_DIR}"
-cat <<EOF > "${CONFIG_FILE}"
+cat <<CFGEOF > "${CONFIG_FILE}"
 {
     "pkg_folder": "${CHOSEN_FOLDER}",
     "server_port": ${CHOSEN_PORT}
 }
-EOF
+CFGEOF
 
 # Ensure icons directory exists
 mkdir -p "${SERVER_DIR}/icons"
 
 # Set permissions
 chmod -R 755 "${PKG_DIR}"
+
+# Attempt to grant ACL permissions on the selected shared folder to package user/group
+SHARE_NAME=$(echo "${CHOSEN_FOLDER}" | awk -F'/' '{print $3}')
+if [ -n "${SHARE_NAME}" ]; then
+    if which synoshare >/dev/null 2>&1; then
+        synoshare --setpermission "${SHARE_NAME}" sc-pkg-sender RW 2>/dev/null || true
+        synoshare --setpermission "${SHARE_NAME}" "pkg-sender" RW 2>/dev/null || true
+    fi
+    if which synoacltool >/dev/null 2>&1; then
+        synoacltool -add "${CHOSEN_FOLDER}" "user:sc-pkg-sender:allow:r-x---a-R-c--:fd--" 2>/dev/null || true
+        synoacltool -add "${CHOSEN_FOLDER}" "group:sc-pkg-sender:allow:r-x---a-R-c--:fd--" 2>/dev/null || true
+    fi
+fi
 
 exit 0

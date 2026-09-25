@@ -26,7 +26,10 @@
         "f_type": "Тип:",
         "f_err": "Ошибки",
         "err_lbl": "Ошибка:",
-        "footer_logs": "Системный журнал (app.log)"
+        "footer_logs": "Системный журнал (app.log)",
+        "permission_error_title": "Внимание: Нет доступа к папке на Synology!",
+        "permission_error_desc": "Сервисный пользователь пакета не имеет прав на чтение папки: {folder}. В DSM: Панель управления -> Общая папка -> выберите папку -> Редактировать -> вкладка Разрешения -> выберите «Пользователь системного приложения» -> дайте пользователю «pkg-sender» права Чтение/Запись.",
+        "folder_not_found": "Указанная папка не найдена: {folder}. Проверьте путь в Настройках."
     },
     "en": {
         "c1_title": "📺 PS5 Console:",
@@ -55,7 +58,10 @@
         "f_type": "Type:",
         "f_err": "Errors",
         "err_lbl": "Error:",
-        "footer_logs": "System Log (app.log)"
+        "footer_logs": "System Log (app.log)",
+        "permission_error_title": "Warning: Permission Denied on Synology!",
+        "permission_error_desc": "The package service user has no read permission for folder: {folder}. In DSM: Control Panel -> Shared Folder -> Edit -> Permissions -> select \"System internal user\" -> grant \"pkg-sender\" Read/Write permissions.",
+        "folder_not_found": "Scan folder not found: {folder}. Please check path in Settings."
     },
     "fr": {
         "c1_title": "📺 Console PS5 :",
@@ -84,7 +90,10 @@
         "f_type": "Type :",
         "f_err": "Erreurs",
         "err_lbl": "Erreur :",
-        "footer_logs": "Journal Système (app.log)"
+        "footer_logs": "Journal Système (app.log)",
+        "permission_error_title": "Attention : Accès refusé sur Synology !",
+        "permission_error_desc": "L'utilisateur du paquet n'a pas la permission de lire le dossier : {folder}. Dans DSM : Panneau de configuration -> Dossier partagé -> Modifier -> Permissions -> \"Utilisateur interne du système\" -> cochez Lecture/Écriture pour \"pkg-sender\".",
+        "folder_not_found": "Dossier introuvable : {folder}."
     },
     "de": {
         "c1_title": "📺 PS5-Konsole:",
@@ -113,7 +122,10 @@
         "f_type": "Typ:",
         "f_err": "Fehler",
         "err_lbl": "Fehler:",
-        "footer_logs": "Systemprotokoll (app.log)"
+        "footer_logs": "Systemprotokoll (app.log)",
+        "permission_error_title": "Warnung: Zugriff verweigert auf Synology!",
+        "permission_error_desc": "Der Paketbenutzer hat keine Leseberechtigung für: {folder}. In DSM: Systemsteuerung -> Gemeinsamer Ordner -> Bearbeiten -> Berechtigungen -> \"Interner Systembenutzer\" -> \"pkg-sender\" Lese-/Schreibrechte erteilen.",
+        "folder_not_found": "Ordner nicht gefunden: {folder}."
     },
     "es": {
         "c1_title": "📺 Consola PS5:",
@@ -142,7 +154,10 @@
         "f_type": "Tipo:",
         "f_err": "Errores",
         "err_lbl": "Error:",
-        "footer_logs": "Registro del Sistema (app.log)"
+        "footer_logs": "Registro del Sistema (app.log)",
+        "permission_error_title": "Atención: ¡Acceso denegado en Synology!",
+        "permission_error_desc": "El usuario del servicio no tiene permiso para leer: {folder}. En DSM: Panel de control -> Carpeta compartida -> Editar -> Permisos -> \"Usuario interno del sistema\" -> otorgar Lectura/Escritura a \"pkg-sender\".",
+        "folder_not_found": "Carpeta no encontrada: {folder}."
     },
     "ja": {
         "c1_title": "📺 PS5コンソール:",
@@ -171,6 +186,9 @@
         "f_type": "タイプ:",
         "f_err": "エラー",
         "err_lbl": "エラー:",
-        "footer_logs": "システムログ (app.log)"
+        "footer_logs": "システムログ (app.log)",
+        "permission_error_title": "注意: Synologyフォルダーへのアクセス権がありません！",
+        "permission_error_desc": "パッケージユーザーは次のフォルダーの読み取り権限がありません: {folder}。DSM: コントロールパネル -> 共有フォルダ -> 編集 -> 権限 ->「システム内部ユーザー」を選択 ->「pkg-sender」に読み取り/書き込み権限を付与してください。",
+        "folder_not_found": "フォルダーが見つかりません: {folder}。"
     }
 }

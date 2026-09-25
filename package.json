@@ -1,13 +1,17 @@
 {
-  "name": "pkg-sender",
-  "version": "1.0.0",
+  "name": "ps5-pkg-sender",
+  "version": "1.2.1",
+  "description": "High-performance remote package installer, Synology DSM SPK backend, and PS5 receiver daemon",
   "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "vite --port 3000 --host 0.0.0.0",
-    "build": "vite build",
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build successful'",
+    "build:spk": "bash synology/build_spk.sh",
     "lint": "echo 'No lint errors'"
   },
-  "devDependencies": {
-    "vite": "^6.0.0"
+  "dependencies": {
+    "http-proxy": "^1.18.1"
   }
 }

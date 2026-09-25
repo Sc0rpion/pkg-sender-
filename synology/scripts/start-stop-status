@@ -38,6 +38,9 @@ start_daemon() {
     fi
     echo "Starting PS5 PKG Sender..."
     cd "${SERVER_DIR}" || exit 1
+    if [ -d "${SERVER_DIR}/lib" ]; then
+        export PYTHONPATH="${SERVER_DIR}/lib:${PYTHONPATH}"
+    fi
     nohup "${PYTHON_BIN}" main.py >> "${LOG_FILE}" 2>&1 &
     PID=$!
     echo ${PID} > "${PID_FILE}"
